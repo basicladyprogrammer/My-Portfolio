@@ -32,9 +32,10 @@ form.addEventListener("submit", function (e) {
   if (name && email && phone && message) {
     Email.send({
       Host: "smtp.elasticemail.com",
-      Username: "sutharsirajan@gmail.com",
-      Password: "B0CCC720559D2D81B2C481BC914C2F520AB3",
-      To: "sutharsirajan@gmail.com",
+      Port: 2525,
+      Username: "sutharsirajan@gmail.com", // Your Gmail
+      Password: "9D575A4D6D316417F54FCDA01591A05E3F43", // From Elastic Email Panel
+      To: "sutharsirajan@gmail.com", // Your Gmail
       From: email,
       Subject: "Contact Form Message",
       Body: `
