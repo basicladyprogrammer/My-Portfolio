@@ -19,35 +19,35 @@ toggleBtns.forEach((btn) => {
   });
 });
 
+emailjs.init("DyF8kM0XFw46cGIzl");
+
 const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  let name = document.getElementById("name").value;
-  let email = document.getElementById("email").value;
-  let phone = document.getElementById("phone").value;
-  let message = document.getElementById("message").value;
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let message = document.getElementById("message").value.trim();
 
   if (name && email && phone && message) {
-    Email.send({
-      Host: "smtp.elasticemail.com",
-      Port: 2525,
-      Username: "sutharsirajan@gmail.com", // Your Gmail
-      Password: "9D575A4D6D316417F54FCDA01591A05E3F43", // From Elastic Email Panel
-      To: "sutharsirajan@gmail.com", // Your Gmail
-      From: email,
-      Subject: "Contact Form Message",
-      Body: `
-        Name: ${name} <br>
-        Email: ${email} <br>
-        Phone: ${phone} <br>
-        Message: ${message}
-      `,
-    }).then((message) => {
-      alert("✅ Message Sent Successfully!");
-      form.reset();
-    });
+    emailjs
+      .send("service_sdy27b6", "template_a4i5sfn", {
+        to_name: "Suthar Sirajan",
+        from_name: name,
+        from_email: email,
+        from_phone: phone,
+        message: message,
+      })
+      .then(() => {
+        alert("✅ Message Sent Successfully!");
+        form.reset();
+      })
+      .catch((error) => {
+        alert("❌ Failed to send message. Try again later.");
+        console.error(error);
+      });
   } else {
     alert("❌ Please fill all fields!");
   }
