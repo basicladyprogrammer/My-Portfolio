@@ -220,6 +220,23 @@ header .navbar a:hover {
   gap: 1.5rem;
 }
 
+/* make the anchor behave like the old .box flex item */
+.projects .box-container .card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+
+  /* take over the sizing that used to be on .box */
+  flex: 1 1 30rem;
+  /* optional: make the link stretch like a card */
+  height: 100%;
+}
+
+/* keep the .box filling the link */
+.projects .box-container .card-link .box {
+  height: 100%;
+}
+
 .projects .box-container .box {
   flex: 1 1 30rem;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
